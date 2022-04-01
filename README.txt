@@ -1,6 +1,6 @@
 # EE-491
 
-Arduino Nano Pins:
+Arduino Nano 33 IoT Pins:
 
   POWER:
     GND

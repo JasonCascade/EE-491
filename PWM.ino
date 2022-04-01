@@ -1,3 +1,4 @@
+//D5 pin for PWM signal to darlington pair to actuator
 void setup() {
   // put your setup code here, to run once:
 

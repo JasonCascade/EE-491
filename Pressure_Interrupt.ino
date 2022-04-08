@@ -1,19 +1,43 @@
-int PressureChangePin = 3;
-int state = 0;
+// Start at low pressure. Push button > switch to next pressure. Only 3 modes. If on mode 3, if button press, then go back to first mode.
+const int pressureButton 3;
+const int currentOut 5;
+volatile int state = 0;
+bool buttonState = LOW;
 
-void changeState(state, PressureChangePin) {
-   state++; 
-}
+void buttonPressed();
+
 
 void setup() {
-  // put your setup code here, to run once:
-  attachInterrupt(PressureChangePin, changeState, RISING);
-  
-  
-
+  pinMode(currentOut, OUTPUT);
+  pinMode(pressureButton, INPUT);
+  attachInterrupt(pressureButton, buttonPressed, RISING);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  //if state 0, output certain current/voltage
+  if(state == 0) {
+    digitalWrite(currentOut, LOW); //maybe switch to analogWrite
+    delay(100);
+  }
+  //if state 1, output certain current/voltage
+  if(state == 1) {
+    
+  }
+  //if state 2, output certain current/voltage
+  if(state == 2) {
+    
+  }
+  //if state 3, output certain current/voltage
+  if(state == 3) {
+    
+  }
+  //else if state 4, set state back to 0
+  else if(state == 4) {
+    state = 0;
+  }
+  
+}
 
+void buttonPressed() {
+  state++;
 }

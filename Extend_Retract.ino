@@ -44,21 +44,28 @@ void Actuator(int counter, double AFO, long i) // counter may not need be passed
     pMillisAct = currentMillis;
     counter++;
     // if the LED is off turn it on and vice-versa:
+
+    /*
+     * 
+     * MAY need to reimplimant this logic is the proceeding if/else statements
+     */
     if (ActState == LOW) {
-      ActState = HIGH;
+      ActState = HIGH; 
     } else {
       ActState = LOW;
     }
 
     // Check if iteration is ODD or EVEN
-    if(counter%2)
+    if(counter%2) //positive value if remainder more than one.. ergo 
     {
       //odd
-      digitalWrite()
-      delay()
+      digitalWrite();
+      delay();
     }
     else{
       //even
+      digitalWrite()
+      delay();
     }
     // Determine if send to function to extend or retract, based on count. Function will send 2ms or 1 ms pulse. Ergo digital write high and low fast.
     digitalWrite(ActPin, ActState);

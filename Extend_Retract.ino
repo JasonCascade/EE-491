@@ -4,7 +4,7 @@
 */
 
 // constants won't change. Used here to set a pin number:
-const int ActPin =  5;// pin 5 for output
+const int ActPin =  d5;// pin 5 for output
 
 //MAY NOT BE NEEDED
 int ActState = LOW;      //To send 5v pulse

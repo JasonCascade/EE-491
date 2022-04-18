@@ -6,8 +6,8 @@
 // constants won't change. Used here to set a pin number:
 const int ActPin =  5;// pin 5 for output
 
-// Variables will change:
-int ActState = LOW;             // 5v pulse
+//MAY NOT BE NEEDED
+int ActState = LOW;      //To send 5v pulse
 
 int c1= 0; //Counter to track actuators extentions & retractions. 
 double ActFreqOutput = 0;// Rate of oscillation, for calculation purposes
@@ -24,6 +24,8 @@ unsigned long preM1 = 0;        // store previous history of time. bro.
 const long ETime = 2; //2ms pulse to Extend
 const long RTime = 1; //1ms pulse to Retract
 
+
+
 void setup() {
   // set the digital pin as output:
   pinMode(ActPin, OUTPUT);
@@ -37,37 +39,21 @@ void setup() {
 void loop() {
   // here is where you'd put code that needs to be running all the time.
 
-  Actuator(0,1,1000); //Counter, actuator frequency hz, interval between?
+  Actuator(1000); //Counter, actuator frequency hz, interval between?
   // INTERVAL will be calculated, basedon desired frequency.
   
 }
 
-void Actuator(int counter, double AFO, long i) // counter may not need be passed, since global variable.
-{
+void Actuator(long i){
   unsigned long currM1 = millis();
   //unsigned long currM2 = millis();
  // unsigned long currM3 = millis();
 
-  if (currentMillis - pMillisAct >= i) {
+  if (currM1 - preM1 >= i) {
     // save the last time you blinked the LED
-    pMillisAct = currentMillis;
+    preM1 = currM1;
     c1++;
-    // if the LED is off turn it on and vice-versa:
-
-    /*
-     * 
-     * MAY need to reimplimant this logic is the proceeding if/else statements
-     */
-
-     // dont need to switch between high and low... switch High and low in the  counter..
-
-    /*
-    if (ActState == LOW) {
-      ActState = HIGH; 
-    } else {
-      ActState = LOW;
-    }
-*/
+    
     // Check if iteration is ODD or EVEN
     if(c1%2) //positive value if remainder more than one.. ergo 
     {
@@ -84,25 +70,7 @@ void Actuator(int counter, double AFO, long i) // counter may not need be passed
       digitalWrite(ActPin,LOW);
 
     }
-    // Determine if send to function to extend or retract, based on count. Function will send 2ms or 1 ms pulse. Ergo digital write high and low fast.
-   // digitalWrite(ActPin, ActState);
+
   }
 }
 
-void Extend()
-{
-  
-}
-
-void Retract()
-{
-}
-
-/* PSUEDOCODE
- *  
- *  
- *  change interval, to change frequence of oscillating
- *
- *
- *
- */

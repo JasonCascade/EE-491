@@ -13,12 +13,13 @@ Serial.begin(9600);
   pinMode(2, INPUT);     // D2 STOP/START
   digitalWrite(2, HIGH);
   bitClear(TIMSK0, 0);  //TC0's interrupt capability is disabled.
-
+// THIS may be problematic, if that is an intterupt pin we are using ^^ - JOSE
 
 }
 
 void loop()
 {
+  /* wont need this in actual implementation - JOSE
   Serial.println("5");
   delay(1000);
   Serial.println("4");
@@ -31,6 +32,7 @@ void loop()
   delay(1000);
   Serial.println("Zzz");
   delay(1500);
+  */
   sleepSetup();
 }
 

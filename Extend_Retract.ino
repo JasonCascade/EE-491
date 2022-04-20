@@ -4,14 +4,13 @@
 */
 
 // constants won't change. Used here to set a pin number:
-const int ActPin =  d5;// pin 5 for output
+const int ActPin =  5;// pin 5 for output
 
 //MAY NOT BE NEEDED
 int ActState = LOW;      //To send 5v pulse
 
 int c1= 0; //Counter to track actuators extentions & retractions. 
-double ActFreqOutput = 0;// Rate of oscillation, for calculation purposes
-long interval = 1000;           // interval at which to retract/extend (milliseconds) TEMPORARY
+long interval = 1000; // interval at which to retract/extend (milliseconds)
 
 
 // Generally, you should use "unsigned long" for variables that hold time
@@ -59,14 +58,14 @@ void Actuator(long i){
     {
       //odd
       digitalWrite(ActPin,HIGH);
-      delay(ETime);
+      delay(ETime); // 2ms to extend
       digitalWrite(ActPin,LOW);
 
     }
     else{ //else, it is even..
       //even
       digitalWrite(ActPin,HIGH);
-      delay(RTime);
+      delay(RTime); // 1 ms to retract
       digitalWrite(ActPin,LOW);
 
     }

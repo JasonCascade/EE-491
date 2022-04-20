@@ -16,7 +16,7 @@ void loop() {
   //if state 0, frequency calculation is set to low
   if(state == 0) {
     //Calculation: #times of oscillation/length of time
-    delay(100);
+    delay(100);// Why is there a delay here? - JOSE
   }
   //if state 1, frequency calculation is set to medium
   if(state == 1) {

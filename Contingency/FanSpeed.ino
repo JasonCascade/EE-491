@@ -48,5 +48,14 @@ void loop() {
 }
 
 void buttonPressed() {
-  state++;
+
+  static unsigned long last_interrupt_time = 0;
+  unsigned long interrupt_time = millis();
+  //If interrupts >200, assume bounce and ignore.
+  if( interrupt_time - last_interrupt_time > 50)
+  {
+    state++;
+  }
+  last_interrupt_time = interrupt_time;
+  
 }

@@ -16,6 +16,6 @@ serial.begin(9600);
 void loop() {
   // put your main code here, to run repeatedly:
 sensorVal = analogRead(pressurePin);
-pressureVoltage = sensorVal * (5.0/1023.0); // convert analog reading, to 0-5volts
+pressureVoltage = sensorVal * (12.0/1023.0); // convert analog reading, to 0-5volts
 serial.print(pressureVoltage);
 }

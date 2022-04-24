@@ -18,10 +18,11 @@ void setup() {
 void loop() {
   //if state 0, output certain current/voltage
   if(state == 0) {
-    //Fan speed at 20%
-    pwm = 51;
+    //Fan speed at 40%
+    pwm = 102;
     analogWrite(voltOut, pwm);
     delay(100);
+    Serial.print("State: ");
     Serial.println(state);
   }
   //if state 1, output certain current/voltage
@@ -29,6 +30,7 @@ void loop() {
     //Fan speed at 60%
     pwm = 153;
     analogWrite(voltOut, pwm); 
+    Serial.print("State: ");
     Serial.println(state); 
   }
   //if state 2, output certain current/voltage
@@ -36,6 +38,7 @@ void loop() {
     //Fan speed at 100%
     pwm = 255;
     analogWrite(voltOut, pwm); 
+    Serial.print("State: ");
     Serial.println(state); 
   }
   //if state 3, output certain current/voltage
@@ -51,8 +54,8 @@ void buttonPressed() {
 
   static unsigned long last_interrupt_time = 0;
   unsigned long interrupt_time = millis();
-  //If interrupts >50, assume bounce and ignore.
-  if( interrupt_time - last_interrupt_time > 50)
+  //If interrupts >200, assume bounce and ignore.
+  if( interrupt_time - last_interrupt_time > 200)
   {
     state++;
   }

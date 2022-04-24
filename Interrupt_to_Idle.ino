@@ -2,7 +2,7 @@ const int sleepPin = 2;
 const int voltOut = 5;
 volatile int state = 0;
 bool buttonState = LOW;
-float pwm = 255;
+float pwm = 0;
 
 void buttonPressed();
 
@@ -18,13 +18,15 @@ void loop() {
   // put your main code here, to run repeatedly:
   if(state == 0) {
     pwm = 255;
+    analogWrite(voltOut, pwm);
     Serial.println("Running");
   }
   if(state == 1) {
-    pwm = 0;
+    pwm = 50;
+    analogWrite(voltOut, pwm);
     Serial.println("Idle");
   }
-  else if(state > 1) {
+  else if(state == 2) {
     state = 0;
   }
 }
